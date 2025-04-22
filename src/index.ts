@@ -6,7 +6,7 @@ import swaggerUi from 'swagger-ui-express';
 import swaggerDocument from './swagger-output.json';
 
 const app = express();
-
+app.use(express.json());
 app.use(cors());
 
 app.use("/api/v1", routes);

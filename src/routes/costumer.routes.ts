@@ -1,22 +1,9 @@
 import express, { Request, Response } from "express";
+import CustomerController from "@/controllers/customer.controller";
 const router = express.Router();
 
-router.get("/", async (req: Request, res: Response) => {
-  const customers = [
-    { name: "John Doe", email: "john.doe@example.com", phone: "+1234567890" },
-    {
-      name: "Joel Smith",
-      email: "joel.smith@example.com",
-      phone: "+0987654321",
-    },
-    {
-      name: "Muke John",
-      email: "john.muke@example.com",
-      phone: "+0987654321",
-    },
-  ];
-
-  return res.status(200).json(customers);
-});
+router.get("/", CustomerController.GetUser);
+router.post("/", CustomerController.CreateCustomer);
+router.get("/:id", CustomerController.GetUserById);
 
 export default router;

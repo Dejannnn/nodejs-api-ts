@@ -1,8 +1,14 @@
-import express, { Request, Response } from "express";
+import express from "express";
 const router = express.Router();
-
-router.get("/", (req: Request, res: Response) => {
-  res.json({ message: "List of users" });
-});
+import {
+  GetUsers,
+  CreateUser,
+  DeleteUser,
+  GetUserById,
+} from "@/controllers/user.controller";
+router.get("/", GetUsers);
+router.get("/:id", GetUserById);
+router.post("/", CreateUser);
+router.delete("/", DeleteUser);
 
 export default router;
